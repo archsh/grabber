@@ -6,9 +6,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	"grabber/core"
 	"log"
 	"os"
+	// "grabber/core"
 )
 
 func main() {
@@ -46,7 +46,5 @@ func main() {
 	if daemonize {
 		fmt.Printf("Run in daemon mode.\n")
 	}
-
-	fmt.Printf("Test: %s\n", core.Test())
 
 }
