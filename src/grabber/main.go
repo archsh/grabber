@@ -6,7 +6,9 @@ package main
 import (
 	"flag"
 	"fmt"
-	// "os"
+	"grabber/core"
+	"log"
+	"os"
 )
 
 func main() {
@@ -29,11 +31,22 @@ func main() {
 	}
 
 	if config_filename != "" {
-		fmt.Printf("Using configuration %s ...", config_filename)
+		fmt.Printf("Using configuration %s ...\n", config_filename)
 	}
 
 	if log_filename != "" {
-		fmt.Printf("Logging into %s ...", log_filename)
+		fmt.Printf("Logging into %s ...\n", log_filename)
+		f, e := os.Open(log_filename)
+		if e != nil {
+			fmt.Printf("Failed to open %s ...", log_filename)
+		}
+		log.SetOutput(f)
 	}
+
+	if daemonize {
+		fmt.Printf("Run in daemon mode.\n")
+	}
+
+	fmt.Printf("Test: %s\n", core.Test())
 
 }
